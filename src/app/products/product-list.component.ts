@@ -10,9 +10,9 @@ import {ProductService} from './product.service'
 
 
 export class ProductListComponent implements OnInit {
-   
+
     //nuestra clase asociada a este componente para que puedan acceder los demas
-    pageTitle: string = 'Product List!';
+    pageTitle: string = 'Lista de productos';
     imageWidth : number = 50;
     imageMargin = 2;
     showImage : boolean = false;
@@ -34,8 +34,8 @@ export class ProductListComponent implements OnInit {
 
     //tiene que inicializarse con algo
     constructor(private productService : ProductService) {
-        
-        
+
+
     }
 
     onRatingClicked(message: string):void{ //recibe un strink porque el eventraiser recibe un string
@@ -52,7 +52,7 @@ export class ProductListComponent implements OnInit {
         product.productName.toLocaleLowerCase().indexOf(filterBy) !==-1);
     }
 
-    
+
 
     ngOnInit(): void {
         //aqui se ejecutara al inicio
@@ -61,10 +61,10 @@ export class ProductListComponent implements OnInit {
             next: products => {
                 this.products = products;
                 this.filteredProducts = this.products;///se movio el filtro aca, porque en el constructor se ejecutaria primero
-                ///y no queremos que filtre antes de que haya productos  
+                ///y no queremos que filtre antes de que haya productos
             },
             error: err=> this.errorMessage=err
-        }); 
-       
+        });
+
     }
 }
